@@ -1,0 +1,32 @@
+{% extends 'base.html.j2'%}
+{% block title %}
+Store
+{% endblock %}
+
+{% block content %}
+<h1>Your Grocery Items</h1>
+
+{% for item in user_cart %}
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+    <div class="col-md-8">
+    <div class="card-body">
+    <h5 class="card-title">{{item.name}} </h5>
+
+    <p class="card-text"><small class="text-muted">
+    {{item.body}}
+    <small><a href="{{url_for('main.delete_from_cart', id=item.id)}}">Remove Item</a></small>
+    <span style="color:darkblue" class="float-end">
+    {{item.price}}
+    </span>
+    </small></p>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endfor %}
+    <div><p>Total</p>
+    {{current_user.total()}}
+    </div>
+
+{% endblock %}

@@ -27,7 +27,7 @@ def create_app(config_class=Config):
 
     # This is where you will be sent if you are not logged
     login.login_view='auth.login' 
-    login.login_message = 'Log your punk *** into the website first'
+    login.login_message = 'Please log in.'
     login.login_message_category='warning'
 
     moment.init_app(app)
@@ -37,12 +37,6 @@ def create_app(config_class=Config):
 
     from .blueprints.main import bp as main_bp
     app.register_blueprint(main_bp)
-
-    from .blueprints.social import bp as social_bp
-    app.register_blueprint(social_bp)
-
-    from .blueprints.api import bp as api_bp
-    app.register_blueprint(api_bp)
 
     from .import exmodel
     
